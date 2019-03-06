@@ -6,6 +6,7 @@ class PlayersController < ApplicationController
 
     def create
         @player = Player.create(player_params)
+        render json:@player
     end
 
     def show
@@ -16,6 +17,6 @@ class PlayersController < ApplicationController
 
     private
     def player_params
-        params.permit(:name)
+        params.require(:player).permit(:name)
     end
 end

@@ -6,6 +6,7 @@ class GamesController < ApplicationController
     
     def create
         @game = Game.create(game_params)
+        render json:@game
     end
 
     def show
@@ -16,6 +17,6 @@ class GamesController < ApplicationController
 
     private
     def game_params
-        params.permit(:player_id, :score)
+        params.require(:game).permit(:player_id, :score)
     end
 end
